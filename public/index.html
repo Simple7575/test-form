@@ -21,5 +21,101 @@
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
+
+        <form
+                action=""
+                method="POST"
+                name="Message"
+                onSubmit={handleSubmit}
+                data-netlify="true"
+                data-netlify-recaptcha="true"
+                hidden
+            >
+                <input type="hidden" name="form-name" value="Message" />
+                <div className="inputs__wrapper">
+                    <label htmlFor="firstName">
+                        <input
+                          
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                           
+                            required
+                        />
+                        <span className="placeholder">Имя</span>
+                    </label>
+                    <label className="lables" htmlFor="secondName">
+                        <input
+                          
+                            type="text"
+                            id="secondName"
+                            name="secondName"
+                            
+                        />
+                        <span className="placeholder">Фамилия</span>
+                    </label>
+                    <label className="lables" htmlFor="number">
+                        <input
+                            
+                            type="tel"
+                            id="number"
+                            name="number"
+                          
+                        />
+                        <span className="placeholder">Телефон</span>
+                    </label>
+                    <label className="lables" htmlFor="mail">
+                        <input
+                            
+                            type="email"
+                            id="mail"
+                            name="mail"
+                           
+                            required
+                        />
+                        <span className="placeholder">E-mail</span>
+                    </label>
+                </div>
+                <div className="radio__btns__container">
+                    <div className="radio__btns__wrapper">
+                        <h4>Понравилась форма?</h4>
+                        <div className="radio__inner">
+                            <label htmlFor="Yes">
+                                <input
+                                    type="radio"
+                                    id="Yes"
+                                    name="radioValue"
+                                    value="Yes"
+                                    
+                                />
+                                <span className="radio__placeholder">Да</span>
+                            </label>
+                            <label htmlFor="No">
+                                <input
+                                    type="radio"
+                                    id="No"
+                                    name="radioValue"
+                                    value="No"
+                                   
+                                />
+                                <span className="radio__placeholder">Нет</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="radio__svgs">
+                </div>
+                <div className="text">
+                    <label htmlFor="user-message">
+                        Ваш комментарий
+                        <textarea
+                            name="user-message"
+                            id="textarea"
+                           
+                        ></textarea>
+                    </label>
+                    <button type="submit">отправить</button>
+                </div>
+                <div data-netlify-recaptcha="true"></div>
+            </form>
     </body>
 </html>
