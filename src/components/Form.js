@@ -48,10 +48,9 @@ export default function Form() {
                     "user-message": "",
                 });
             })
-            .then(() => {
-                e.preventDefault();
-            })
-            .catch((error) => alert(error));
+            .catch((error) => console.log(error));
+
+        e.preventDefault();
     };
 
     useEffect(() => {
@@ -64,7 +63,6 @@ export default function Form() {
         <div className="form__container">
             <h1>Обратная связь.</h1>
             <form
-                action=""
                 method="POST"
                 name="Message"
                 onSubmit={handleSubmit}
