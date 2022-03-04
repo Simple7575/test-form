@@ -68,7 +68,7 @@ export default function Form() {
                 name="Message"
                 method="POST"
                 data-netlify="true"
-                // data-netlify-recaptcha="true"
+                data-netlify-recaptcha="true"
             >
                 <input type="hidden" name="form-name" value="Message" />
                 <div className="inputs__wrapper">
@@ -215,7 +215,7 @@ export default function Form() {
                     </label>
                     <button type="submit">отправить</button>
                 </div>
-                {/* <div data-netlify-recaptcha="true"></div> */}
+                <div data-netlify-recaptcha="true"></div>
             </form>
         </div>
     );
