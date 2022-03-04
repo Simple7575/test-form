@@ -27,6 +27,7 @@
                 name="Message"
                 onSubmit={handleSubmit}
                 data-netlify="true"
+                data-netlify-recaptcha="true"
                 hidden
             >
                 <input type="hidden" name="form-name" value="Message" />
@@ -112,8 +113,8 @@
                         ></textarea>
                     </label>
                     <button type="submit">отправить</button>
-                    <!-- <div data-netlify-recaptcha="true"></div> -->
                 </div>
+                <div data-netlify-recaptcha="true"></div>
             </form>
     </body>
 </html>
