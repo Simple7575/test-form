@@ -27,7 +27,6 @@ export default function Form() {
             ...formState,
             [e.target.name]: e.target.value,
         });
-        console.log(formState);
     };
 
     const handleSubmit = (e) => {
@@ -49,8 +48,10 @@ export default function Form() {
                     "user-message": "",
                 });
             })
+            .then(() => {
+                e.preventDefault();
+            })
             .catch((error) => alert(error));
-        e.preventDefault();
     };
 
     useEffect(() => {
