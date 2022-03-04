@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+    width: 7px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #1569d6;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+
+    overflow-x: hidden;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+.global__container {
+    padding: 3rem 7rem;
+    background: url("./img/digitalmail.jpg");
+    background-size: contain;
+    background-position: -5rem 0rem;
+    background-repeat: no-repeat;
+    width: 100vw;
+    max-width: 1440px;
+    max-height: 1024px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: black;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.form__container {
+    color: white;
+    padding: 2rem 2rem;
+    width: 450px;
+    height: 600px;
+    background: linear-gradient(
+        152.14deg,
+        rgba(132, 196, 230, 0.34) 2.65%,
+        rgba(132, 196, 230, 0.08) 96.68%
+    );
+    box-shadow: -3px -4px 18px 2px #4660ad,
+        11px 7px 19px 2px rgba(132, 196, 230, 0.25);
+    backdrop-filter: blur(50px);
+    border-radius: 28px;
+
+    h1 {
+        text-align: center;
+        height: 29px;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 29px;
+        color: #10fc0c;
+        text-shadow: 0px 0px 18px rgba(255, 255, 255, 0.36);
+    }
+}
+
+.inputs__wrapper {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+
+    .lables {
+        position: relative;
+        background-color: rgba(102, 102, 102, 0.247);
+        margin-bottom: 2rem;
+        display: flex;
+        // justify-content: center;
+        perspective: prese;
+
+        .inputs {
+            padding: 0 5px;
+            width: 100%;
+            height: 37px;
+            border-radius: 3px;
+            border: 2px solid #73acfd;
+            box-shadow: 0px 0px 8px 1px rgba(0, 216, 255, 0.71);
+            background-color: transparent;
+            outline: none;
+            color: #73acfd;
+            transition: all 100ms ease;
+
+            &:focus + .placeholder {
+                top: -13px;
+                color: white;
+            }
+
+            &.full + .placeholder {
+                top: -13px;
+                color: white;
+            }
+
+            &:focus {
+                background: rgba(196, 196, 196, 0.15);
+            }
+        }
+
+        .placeholder {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.4);
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: all 200ms linear;
+        }
+    }
+}
+
+.radio__btns__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    h4 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 18px;
+        color: #fff500;
+        text-shadow: 0px 0px 18px rgba(255, 255, 255, 0.36);
+    }
+
+    .radio__btns__wrapper {
+        display: flex;
+        flex-direction: column;
+
+        .radio__inner {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-around;
+
+            label {
+                position: relative;
+                cursor: pointer;
+                width: max-content;
+
+                span {
+                    padding-left: 2rem;
+
+                    &::before {
+                        content: "";
+                        display: in;
+                        position: absolute;
+                        width: 28px;
+                        height: 28px;
+                        top: 50%;
+                        left: 0px;
+                        transform: translateY(-50%);
+                        border-radius: 500px;
+                        background: rgba(196, 196, 196, 0.29);
+                        transition: all 100ms linear;
+                    }
+                }
+            }
+        }
+
+        input {
+            display: none;
+
+            &:checked + span::before {
+                background: #98cdff;
+                box-shadow: 0px 0px 8px 4px rgba(152, 205, 255, 0.47);
+            }
+        }
+    }
+
+    .radio__svgs {
+        display: flex;
+    }
+
+    svg {
+        width: 105px;
+        // transform: translateZ(200px);
+    }
+
+    .smile {
+        path {
+        }
+    }
+
+    .smile.neon {
+        path {
+            fill: rgba(6, 255, 2, 0.73);
+            filter: drop-shadow(-3px -3px 10px rgba(4, 255, 0, 0.548))
+                drop-shadow(3px 3px 8px rgba(5, 255, 0, 0.548));
+        }
+    }
+
+    .sad.neon {
+        path {
+            fill: #eb4b4b;
+            filter: drop-shadow(-3px -3px 10px rgba(235, 75, 75, 0.548))
+                drop-shadow(3px 3px 8px rgba(235, 75, 75, 0.548));
+        }
+    }
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 18px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    textarea {
+        margin-top: 0.7rem;
+        width: 100%;
+        height: 100px;
+        background-color: transparent;
+        border: 2px solid #73acfd;
+        box-shadow: 0px 0px 8px 1px rgba(0, 216, 255, 0.71);
+        border-radius: 10px;
+        padding: 0.5rem;
+        color: #73acfd;
+        outline: none;
+    }
+
+    button {
+        margin-top: 0.7rem;
+        margin-left: auto;
+        width: 131px;
+        height: 37.75px;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: #11dd0d;
+        box-shadow: -0.596838px -1.79051px 35.37px rgba(17, 221, 13, 0.18),
+            1.19368px 2.98419px 40.74px rgba(17, 221, 13, 0.2);
+        border-radius: 5.96838px;
+        color: rgba(255, 255, 255, 0.76);
+        text-shadow: 0px 0px 14.1972px rgba(255, 255, 255, 0.36);
+
+        &:hover {
+            background-color: #73acfd;
+        }
+    }
+}
+
+img {
+    // width: 500px;
+}
