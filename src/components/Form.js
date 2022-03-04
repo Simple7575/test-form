@@ -39,18 +39,19 @@ export default function Form() {
         })
             .then(() => {
                 // setSuccessMsgState("open");
-                setFormState({
-                    firstName: "",
-                    secondName: "",
-                    number: "",
-                    mail: "",
-                    radioValue: "Yes",
-                    "user-message": "",
-                });
+                console.log("success");
             })
             .catch((error) => console.log(error));
 
         e.preventDefault();
+        setFormState({
+            firstName: "",
+            secondName: "",
+            number: "",
+            mail: "",
+            radioValue: "Yes",
+            "user-message": "",
+        });
     };
 
     useEffect(() => {
@@ -63,11 +64,11 @@ export default function Form() {
         <div className="form__container">
             <h1>Обратная связь.</h1>
             <form
-                method="POST"
-                name="Message"
                 onSubmit={handleSubmit}
+                name="Message"
+                method="POST"
                 data-netlify="true"
-                data-netlify-recaptcha="true"
+                // data-netlify-recaptcha="true"
             >
                 <input type="hidden" name="form-name" value="Message" />
                 <div className="inputs__wrapper">
@@ -214,7 +215,7 @@ export default function Form() {
                     </label>
                     <button type="submit">отправить</button>
                 </div>
-                <div data-netlify-recaptcha="true"></div>
+                {/* <div data-netlify-recaptcha="true"></div> */}
             </form>
         </div>
     );
