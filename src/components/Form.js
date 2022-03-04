@@ -31,7 +31,6 @@ export default function Form() {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
         fetch("/", {
             method: "POST",
             headers: {
@@ -51,6 +50,7 @@ export default function Form() {
                 });
             })
             .catch((error) => alert(error));
+        e.preventDefault();
     };
 
     useEffect(() => {
