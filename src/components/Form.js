@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 // import Tilt from "vanilla-tilt";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Form() {
     const encode = (data) => {
