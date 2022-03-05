@@ -15,8 +15,8 @@ export default function Form() {
     };
 
     const captchaRef = useRef();
-    const [buttonDisable, setButtonDisable] = useState(true);
-    const [captchaResponse, setCaptchaResponse] = useState(null);
+    // const [buttonDisable, setButtonDisable] = useState(true);
+    // const [captchaResponse, setCaptchaResponse] = useState(null);
     const [formState, setFormState] = useState({
         firstName: "",
         secondName: "",
@@ -33,45 +33,40 @@ export default function Form() {
         });
     };
 
-    const captchaCallback = (response) => {
-        setCaptchaResponse(response);
-        setButtonDisable(false);
-    };
+    // const captchaCallback = (response) => {
+    //     setCaptchaResponse(response);
+    //     setButtonDisable(false);
+    // };
 
     const handleSubmit = (e) => {
-        if (captchaResponse) {
-            fetch("/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: encode({
-                    "form-name": "Message",
-                    ...formState,
-                    // "g-recaptcha-response": captchaResponse,
-                }),
+        fetch("/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: encode({
+                "form-name": "Message",
+                ...formState,
+                // "g-recaptcha-response": captchaResponse,
+            }),
+        })
+            .then(() => {
+                // setSuccessMsgState("open");
+                console.log("success");
             })
-                .then(() => {
-                    // setSuccessMsgState("open");
-                    console.log("success");
-                })
-                .catch((error) => console.log(error));
+            .catch((error) => console.log(error));
 
-            e.preventDefault();
-            setFormState({
-                firstName: "",
-                secondName: "",
-                number: "",
-                mail: "",
-                radioValue: "Yes",
-                "user-message": "",
-            });
-            alert("Success.");
-            captchaRef.current.reset();
-        } else {
-            e.preventDefault();
-            alert("Please prove that you are human.");
-        }
+        e.preventDefault();
+        setFormState({
+            firstName: "",
+            secondName: "",
+            number: "",
+            mail: "",
+            radioValue: "Yes",
+            "user-message": "",
+        });
+        alert("Success.");
+        captchaRef.current.reset();
     };
 
     useEffect(() => {
@@ -232,10 +227,13 @@ export default function Form() {
                             onChange={handleChange}
                         ></textarea>
                     </label>
-                    <button type="submit" disabled={buttonDisable}>
+                    <button
+                        type="submit"
+                        //  disabled={buttonDisable}
+                    >
                         отправить
                     </button>
-                    <ReCAPTCHA
+                    {/* <ReCAPTCHA
                         // asyncScriptOnLoad={setReady(true)}
 
                         ref={captchaRef}
@@ -247,7 +245,7 @@ export default function Form() {
                             setCaptchaResponse(null);
                         }}
                         theme="dark"
-                    />
+                    /> */}
                 </div>
                 {/* <div
                     className="g-recaptcha"
