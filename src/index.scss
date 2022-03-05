@@ -266,7 +266,19 @@ code {
         &:hover {
             background-color: #73acfd;
         }
+
+        &:disabled {
+            cursor: not-allowed;
+            background: grey;
+            box-shadow: none;
+            color: rgb(182, 182, 182);
+        }
     }
+}
+
+.captcha {
+    margin-top: 0.3rem;
+    margin-left: auto;
 }
 
 img {

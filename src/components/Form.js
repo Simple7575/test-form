@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Tilt from "vanilla-tilt";
+// import Tilt from "vanilla-tilt";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Form() {
     const encode = (data) => {
@@ -13,6 +14,8 @@ export default function Form() {
             .join("&");
     };
 
+    const [buttonDisable, setButtonDisable] = useState(true);
+    const [captchaResponse, setCaptchaResponse] = useState(null);
     const [formState, setFormState] = useState({
         firstName: "",
         secondName: "",
@@ -29,35 +32,50 @@ export default function Form() {
         });
     };
 
-    const handleSubmit = (e) => {
-        fetch("/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: encode({ "form-name": "Message", ...formState }),
-        })
-            .then(() => {
-                // setSuccessMsgState("open");
-                console.log("success");
-            })
-            .catch((error) => console.log(error));
+    const captchaCallback = (response) => {
+        console.log(response);
+        setCaptchaResponse(response);
+        setButtonDisable(false);
+    };
 
-        e.preventDefault();
-        setFormState({
-            firstName: "",
-            secondName: "",
-            number: "",
-            mail: "",
-            radioValue: "Yes",
-            "user-message": "",
-        });
+    const handleSubmit = (e) => {
+        if (captchaResponse) {
+            fetch("/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: encode({
+                    "form-name": "Message",
+                    ...formState,
+                    "g-recaptcha-response": captchaResponse,
+                }),
+            })
+                .then(() => {
+                    // setSuccessMsgState("open");
+                    console.log("success");
+                })
+                .catch((error) => console.log(error));
+
+            e.preventDefault();
+            setFormState({
+                firstName: "",
+                secondName: "",
+                number: "",
+                mail: "",
+                radioValue: "Yes",
+                "user-message": "",
+            });
+            alert("Success.");
+        } else {
+            e.preventDefault();
+            alert("Please prove that you are human.");
+        }
     };
 
     useEffect(() => {
-        const element = document.querySelector(".form__container");
-
-        Tilt.init(element, {});
+        // const element = document.querySelector(".form__container");
+        // Tilt.init(element, {});
     }, []);
 
     return (
@@ -213,9 +231,26 @@ export default function Form() {
                             onChange={handleChange}
                         ></textarea>
                     </label>
-                    <button type="submit">отправить</button>
+                    <button type="submit" disabled={buttonDisable}>
+                        отправить
+                    </button>
+                    <ReCAPTCHA
+                        className="captcha"
+                        sitekey="6LfCJLceAAAAAJ_1NHWzOK2v5Uu60D5aQ6ACiq4R"
+                        onChange={captchaCallback}
+                        onExpired={() => {
+                            setButtonDisable(true);
+                            setCaptchaResponse(null);
+                        }}
+                        theme="dark"
+                    />
                 </div>
-                <div data-netlify-recaptcha="true"></div>
+                {/* <div
+                    className="g-recaptcha"
+                    data-sitekey="6LfCJLceAAAAAJ_1NHWzOK2v5Uu60D5aQ6ACiq4R"
+                    data-theme="dark"
+                    data-callback={captchaCallback}
+                ></div> */}
             </form>
         </div>
     );
