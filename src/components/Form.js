@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer, useRef } from "react";
 // import Tilt from "vanilla-tilt";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -14,6 +14,7 @@ export default function Form() {
             .join("&");
     };
 
+    const captchaRef = useRef();
     const [buttonDisable, setButtonDisable] = useState(true);
     const [captchaResponse, setCaptchaResponse] = useState(null);
     const [formState, setFormState] = useState({
@@ -33,7 +34,6 @@ export default function Form() {
     };
 
     const captchaCallback = (response) => {
-        console.log(response);
         setCaptchaResponse(response);
         setButtonDisable(false);
     };
@@ -48,7 +48,7 @@ export default function Form() {
                 body: encode({
                     "form-name": "Message",
                     ...formState,
-                    "g-recaptcha-response": captchaResponse,
+                    // "g-recaptcha-response": captchaResponse,
                 }),
             })
                 .then(() => {
@@ -67,6 +67,7 @@ export default function Form() {
                 "user-message": "",
             });
             alert("Success.");
+            captchaRef.current.reset();
         } else {
             e.preventDefault();
             alert("Please prove that you are human.");
@@ -235,6 +236,9 @@ export default function Form() {
                         отправить
                     </button>
                     <ReCAPTCHA
+                        // asyncScriptOnLoad={setReady(true)}
+
+                        ref={captchaRef}
                         className="captcha"
                         sitekey="6LfCJLceAAAAAJ_1NHWzOK2v5Uu60D5aQ6ACiq4R"
                         onChange={captchaCallback}
