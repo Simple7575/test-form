@@ -53,6 +53,10 @@ code {
     justify-content: flex-end;
     background-color: black;
     font-family: "Ubuntu", sans-serif;
+
+    @media only screen and (max-width: 480px) {
+        padding: 1rem 1rem;
+    }
 }
 
 .form__container {
@@ -69,6 +73,12 @@ code {
         11px 7px 19px 2px rgba(132, 196, 230, 0.25);
     backdrop-filter: blur(50px);
     border-radius: 28px;
+    transition: all 100ms ease;
+
+    @media only screen and (max-width: 480px) {
+        height: 700px;
+        padding: 1rem 1rem;
+    }
 
     h1 {
         text-align: center;
@@ -79,6 +89,10 @@ code {
         line-height: 29px;
         color: #10fc0c;
         text-shadow: 0px 0px 18px rgba(255, 255, 255, 0.36);
+
+        @media only screen and (max-width: 480px) {
+            margin-top: 1.5rem;
+        }
     }
 }
 
@@ -87,6 +101,10 @@ code {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 1rem;
+
+    @media only screen and (max-width: 480px) {
+        margin-top: 3rem;
+    }
 
     .lables {
         position: relative;
