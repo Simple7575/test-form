@@ -66,11 +66,11 @@ export default function Form() {
                 radioValue: "Yes",
                 "user-message": "",
             });
-            alert("Success.");
+            alert("Спасибо ваше сообщение отправлено.");
             captchaRef.current.reset();
         } else {
             e.preventDefault();
-            alert("Please prove that you are human.");
+            alert("Пожалуйста, подтвердите,что Вы не робот!.");
         }
     };
 
