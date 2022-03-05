@@ -65,8 +65,8 @@ export default function Form() {
             radioValue: "Yes",
             "user-message": "",
         });
-        alert("Success.");
-        captchaRef.current.reset();
+        // alert("Success.");
+        // captchaRef.current.reset();
     };
 
     useEffect(() => {
