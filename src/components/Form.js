@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 // import Tilt from "vanilla-tilt";
 // import ReCAPTCHA from "react-google-recaptcha";
 
@@ -14,7 +14,7 @@ export default function Form() {
             .join("&");
     };
 
-    const captchaRef = useRef();
+    // const captchaRef = useRef();
     // const [buttonDisable, setButtonDisable] = useState(true);
     // const [captchaResponse, setCaptchaResponse] = useState(null);
     const [formState, setFormState] = useState({
